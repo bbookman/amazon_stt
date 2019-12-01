@@ -1,18 +1,13 @@
-from __future__ import print_function
-
 import time, json
 import boto3, pdb
 
-"""
-s3 = boto3.resource('s3')
-obj = s3.Object(bucketname, itemname)
-body = obj.get()['Body'].read() """
+
 
 transcribe = boto3.client('transcribe')
 bucket = 'mytestbucketbookman'
 
 job_name = "7"  #must be unique or removed?
-job_uri = f"s3://{bucket}/test.wav"
+job_uri = f"s3://{bucket}/{file}"   ### file from main
 
 transcribe.start_transcription_job(
     TranscriptionJobName=job_name,
